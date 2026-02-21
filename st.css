@@ -1,0 +1,14 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.search-box input, .search-box button {
+  margin: 5px;
+  padding: 5px;
+}
+
+#poem-list div {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
