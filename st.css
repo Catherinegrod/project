@@ -9,6 +9,15 @@ body {
 }
 
 #poem-list div {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #c41111;
   padding: 10px;
+}
+.vydelit_epitet {
+  background-color: rgb(166, 253, 154);
+  font-weight: bold;
+}
+
+.vydelit_metaphoru {
+  color: red;
+  font-style: italic;
 }
