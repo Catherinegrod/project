@@ -19,6 +19,13 @@ let stihi = [
     avtor: "М.Ю. Лермонтов",
     janr: "Эпопея",
     epoha: "Романтизм"
+  },
+  {
+    id: 4,
+    nazvanie: "Послушайте",
+    avtor:"В.В. Маяковский",
+    janr: "Лирика",
+    epoha:"Романтизм",
   }
 ];
 
@@ -62,8 +69,10 @@ function naiti_stihi() {
 
 
 function pereiti_k_stihu(id) {
-  alert("Открытие стиха с ID: " + id);
+    localStorage.setItem("tekushiy_stih_id", id);
+  window.location.href = "poem.html";
 }
+
 
 
 
