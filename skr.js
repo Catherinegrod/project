@@ -22,10 +22,10 @@ let stihi = [
   }
 ];
 
-// Функция, которая показывает все стихи
+
 function pokazat_vse_stihi() {
   let spisok = document.getElementById("spisok_stihov");
-  spisok.innerHTML = ""; // очищаем список
+  spisok.innerHTML = ""; 
 
   for (let i = 0; i < stihi.length; i++) {
     let stih = stihi[i];
@@ -39,16 +39,15 @@ function pokazat_vse_stihi() {
   }
 }
 
-// Функция, которая ищет стихи по автору
+
 function naiti_stihi() {
-  let vvod = document.getElementById("pole_avtor").value; // то, что ввели
+  let vvod = document.getElementById("pole_avtor").value; 
   let spisok = document.getElementById("spisok_stihov");
-  spisok.innerHTML = ""; // очищаем список
+  spisok.innerHTML = ""; 
 
   for (let i = 0; i < stihi.length; i++) {
     let stih = stihi[i];
 
-    // Проверяем, есть ли введённый текст в имени автора
     if (stih.avtor.includes(vvod)) {
       let blok = document.createElement("div");
       blok.innerHTML = `
@@ -61,10 +60,11 @@ function naiti_stihi() {
   }
 }
 
-// Функция для перехода к стиху (пока просто выводит ID)
+
 function pereiti_k_stihu(id) {
   alert("Открытие стиха с ID: " + id);
 }
 
-// Показываем все стихи при загрузке страницы
+
+
 pokazat_vse_stihi();
