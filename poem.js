@@ -1,5 +1,6 @@
 
 
+
 let stihi = [
   {
     id: 1,
@@ -7,6 +8,7 @@ let stihi = [
     avtor: "А.С. Пушкин",
     janr: "Баллада",
     epoha: "Романтизм",
+    opisanie:"что-то очень крутое",
     tekst: `У лукоморья дуб зелёный;<br><epithet>Златая</epithet> цепь на дубе том:<br>И днём и ночью кот учёный...`
   },
   {
@@ -15,6 +17,7 @@ let stihi = [
     avtor: "А.С. Пушкин",
     janr: "Лирика",
     epoha: "Романтизм",
+    opisanie:"что-то очень крутое",
     tekst: `Мороз и солнце; день чудесный!<br>Еще ты дремлешь, друг <epithet>прелестный</epithet>...`
   },
   {
@@ -23,6 +26,7 @@ let stihi = [
     avtor: "М.Ю. Лермонтов",
     janr: "Эпопея",
     epoha: "Романтизм",
+    opisanie:"что-то очень крутое",
     tekst: `Сквозь дым летучий французы<br>Русские бойцы...`
   },
   {
@@ -31,11 +35,38 @@ let stihi = [
     avtor:"В.В. Маяковский",
     janr: "Лирика",
     epoha:"Романтизм",
+    opisanie:"что-то очень крутое",
     tekst:`Послушайте!
-<br>Ведь, если звезды <metaphor>зажигают </metaphor> —
+<br>Ведь, если <metaphor>звезды зажигают </metaphor> —
 <br>значит — это кому-нибудь нужно?
 <br>Значит — кто-то хочет, чтобы они были?
-<br>Значит — кто-то называет эти плево́чки жемчужиной?`
+<br>Значит — кто-то называет эти <epithet>плево́чки</epithet> <dopepithet>жемчужиной</dopepithet>?
+<br>
+<br>И, надрываясь
+<br>в <metaphor>метелях полу́денной пыли</metaphor>,
+<br>врывается к богу,
+<br>боится, что опоздал,
+<br>плачет,
+<br>целует ему <epithet>жилистую</epithet> <dopepithet>руку</dopepithet>,
+<br>просит —
+<br>чтоб обязательно была звезда! —
+<br>клянется —
+<br>не перенесет эту беззвездную муку!
+<br>А после
+<br>ходит <epithet>тревожный</epithet>,
+<br>но <epithet>спокойный</epithet> наружно.
+<br>Говорит кому-то:
+<br>«Ведь теперь тебе ничего?
+<br>Не страшно?
+<br>Да?!»
+<br>Послушайте!
+<br>Ведь, если <metaphor>звезды</metaphor>
+<br><metaphor>зажигают</metaphor> —
+<br>значит — это кому-нибудь нужно?
+<br>Значит — это необходимо,
+<br>чтобы каждый вечер
+<br>над крышами
+<br>загоралась хоть одна звезда?!`
   },
   {
     id:5,
@@ -43,6 +74,7 @@ let stihi = [
     avtor:"Ф.И. Тютчев",
     janr:"Лирика",
     epoha:"Романтизм",
+    opisanie:"реально крутое описание",
     tekst:`Люблю грозу в начале мая,
     <br>Когда <epithet>весенний,первый</epithet> <dopepithet>гром</dopepithet>,
     <br> Как бы <olistetvorenie>резвяся<olistetvorenie> и <olistetvorenie>играя</olistetvorenie>,
@@ -90,10 +122,18 @@ if (naidennyi_stih) {
 function vyydelit_epitet() {
   let tekst = document.getElementById("tekst_stiha").innerHTML;
   let novyi_tekst = tekst.replace(/<epithet>(.*?)<\/epithet>/g, '<span class="vydelit_epitet">$1</span>');
-   novyi_tekst = novyi_tekst.replace(/<dopepithet>(.*?)<\/dopepithet>/g, '<span class="doopolnenie_epitet">$1</span>');
+  novyi_tekst = novyi_tekst.replace(/<dopepithet>(.*?)<\/dopepithet>/g, '<span class="doopolnenie_epitet">$1</span>');
   document.getElementById("tekst_stiha").innerHTML = novyi_tekst;
 }
 
+function vydelit_vse() {
+  let tekst = document.getElementById("tekst_stiha").innerHTML;
+    tekst = tekst.replace(/<epithet>(.*?)<\/epithet>/g, '<span class="vydelit_epitet">$1</span>');
+  tekst =tekst.replace(/<dopepithet>(.*?)<\/dopepithet>/g, '<span class="doopolnenie_epitet">$1</span>');
+  tekst = tekst.replace(/<olistetvorenie>(.*?)<\/olistetvorenie>/g, '<span class="vydelit_olistetvorenie">$1</span>');
+  tekst = tekst.replace(/<metaphor>(.*?)<\/metaphor>/g, '<span class="vydelit_metaphoru">$1</span>');
+  document.getElementById("tekst_stiha").innerHTML = tekst;
+}
 
 
 function vyydelit_olistetvorenie() {
