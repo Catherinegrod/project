@@ -13,11 +13,19 @@ body {
   padding: 10px;
 }
 .vydelit_epitet {
-  background-color: rgb(166, 253, 154);
+  background-color: rgb(183, 117, 245);
   font-weight: bold;
 }
 
 .vydelit_metaphoru {
   color: red;
   font-style: italic;
+}
+.vydelit_olistetvorenie{
+  color:rgb(198, 248, 61);
+  font-weight: bold;
+}
+.doopolnenie_epitet{
+background-color:rgb(212, 183, 240);
+font-weight: bold;
 }
