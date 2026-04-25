@@ -2,23 +2,52 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Стихотворение</title>
   <link rel="stylesheet" href="st.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="poem.js"></script>
 </head>
 <body>
-
   <h1>Стихотворение</h1>
-  <button onclick="vydelit_vse()">Выделить все</button>
-  <button onclick="vyydelit_olistetvorenie()">Олицетворение</button>
-  <button onclick="vyydelit_epitet()">Эпитет</button>
-  <button onclick="vyydelit_metaphoru()">Метафора</button>
-  <button onclick="snyat_vyydelenie()">Снять выделение</button>
 
-  <div id="tekst_stiha">
-
+  
+  <div id="gruppy-knopok">
+    <button onclick="pokazatLeksiku()">Лексические средства</button>
+    <button onclick="pokazatFonetiku()">Фонетические средства</button>
+    <button onclick="pokazatSintaksis()">Синтаксические средства</button>
+    <br>
+    <button onclick="snyatVyydelenie()">Сбросить всё</button>
   </div>
 
-  <script src="poem.js"></script>
+<div id="knopki-leksika" style="display: none;">
+  <button onclick="vyydelit_epitet()">Эпитет</button>
+  <button onclick="vyydelit_metaphoru()">Метафора</button>
+  <button onclick="vyydelit_olitsetvorenie()">Олицетворение</button>
+  <button onclick="vyydelit_sravnenie()">Сравнение</button>
+  <button onclick="vyydelit_metonimiya()">Метонимия</button>
+  <button onclick="vyydelit_giperbola()">Гипербола</button>
+  <button onclick="vyydelit_litota()">Литота</button>
+  <button onclick="nazadKGruppam()">← Назад</button>
+</div>
 
+<div id="knopki-fonetika" style="display: none;">
+  <button onclick="vyydelit_alliteration()">Аллитерация</button>
+  <button onclick="vyydelit_assonance()">Ассонанс</button>
+  <button onclick="nazadKGruppam()">← Назад</button>
+</div>
+
+<div id="knopki-sintaksis" style="display: none;">
+  <button onclick="vyydelit_anaphora()">Анафора</button>
+  <button onclick="vyydelit_epifora()">Эпифора</button>
+  <button onclick="vyydelit_parcellation()">Парцелляция</button>
+  <button onclick="nazadKGruppam()">← Назад</button>
+</div>
+
+  <div id="tekst_stiha">Загрузка...</div>
+
+  <br><br>
+  <a href="catalog.html">← Вернуться в каталог</a>
 </body>
 </html>

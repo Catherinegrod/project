@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Добавить стихотворение</title>
+  <link rel="stylesheet" href="st.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="auth-supabase.js"></script>
+</head>
+<body>
+  <h1>Добавить стихотворение</h1>
+  
+  <button onclick="snyat_vyydelenie()">← Вернуться в каталог</button>
+  
+  <hr>
+  
+  <form id="form_dobavleniya">
+    <label>Название:</label>
+    <input type="text" id="nazvanie_stiha" placeholder="Название"><br><br>
+    
+    <label>Автор:</label>
+    <input type="text" id="avtor_stiha" placeholder="Автор стихотворения"><br><br>
+    
+    <label>Жанр:</label>
+    <input type="text" id="janr_stiha" placeholder="Жанр"><br><br>
+    
+    <label>Эпоха:</label>
+    <input type="text" id="epoha_stiha" placeholder="Эпоха"><br><br>
+    
+    <label>Текст стихотворения:</label>
+    <textarea id="tekst_stiha" placeholder="Текст стихотворения (используйте &lt;epithet&gt; и &lt;metaphor&gt;)" rows="10" style="width: 100%;"></textarea><br><br>
+    
+    <button type="button" onclick="dobavit_stih()">Добавить стихотворение</button>
+  </form>
+  
+  <div id="status-message"></div>
+  
+  <script>
+    
+    window.addEventListener('DOMContentLoaded', () => {
+      proverit_polzovatelya();
+      
+      
+      if (!localStorage.getItem("user")) {
+        alert("Для добавления стихов нужно войти в аккаунт!");
+        window.location.href = "ind1.html";
+      }
+    });
+    
+    async function dobavit_stih() {
+  const { data: { user }, error: userError } = await supabaseClient.auth.getUser();
+  if (!user) {
+    alert("Сначала войдите в аккаунт!");
+    return;
+  }
+  
+  let stih = {
+    nazvanie: document.getElementById("nazvanie_stiha").value,
+    avtor: document.getElementById("avtor_stiha").value,
+    janr: document.getElementById("janr_stiha").value,
+    epoha: document.getElementById("epoha_stiha").value,
+    tekst: document.getElementById("tekst_stiha").value,
+    avtor_stiha: user.user_metadata.full_name || user.email,
+    data_dobavleniya: new Date().toISOString(),
+    is_ai: false
+  };
+  
+  const { data, error } = await supabaseClient
+    .from('STIHI')
+    .insert([stih]);
+  
+  if (error) {
+    alert("Ошибка: " + error.message);
+  } else {
+    alert("Стихотворение добавлено!");
+    skryt_formu_dobavleniya();
+    document.getElementById("nazvanie_stiha").value = "";
+    document.getElementById("avtor_stiha").value = "";
+    document.getElementById("janr_stiha").value = "";
+    document.getElementById("epoha_stiha").value = "";
+    document.getElementById("tekst_stiha").value = "";
+  
+    pokazat_vse_stihi();
+  }
+}
+  </script>
+</body>
+</html>
