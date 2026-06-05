@@ -8,24 +8,59 @@ body {
   padding: 5px;
 }
 
-#poem-list div {
+#spisok_stihov div {
   border-bottom: 1px solid #c41111;
   padding: 10px;
 }
+
+
+/* Лексические */
 .vydelit_epitet {
-  background-color: rgb(183, 117, 245);
+  background-color: #c8e6c9; 
   font-weight: bold;
 }
 
 .vydelit_metaphoru {
-  color: red;
+  background-color: #ffcdd2; 
+  color: #c62828; 
   font-style: italic;
 }
-.vydelit_olistetvorenie{
-  color:rgb(198, 248, 61);
-  font-weight: bold;
+.vydelit_olitsetvorenie {
+  background-color: #bbdefb; 
+  border-bottom: 2px dashed #1976d2; 
 }
-.doopolnenie_epitet{
-background-color:rgb(212, 183, 240);
-font-weight: bold;
+.vydelit_sravnenie {
+   background-color: #f8bbd0; 
+}
+.vydelit_metonimiya {
+  background-color: #e1bee7; 
+}
+.vydelit_giperbola {
+   background-color: #ffecb3; 
+   font-weight: bold; 
+}
+.vydelit_litota {
+   background-color: #d1c4e9; 
+}
+
+/* Фонетические */
+.vydelit_alliteration {
+  background-color: #b2dfdb; 
+  text-decoration: underline; 
+}
+.vydelit_assonance {
+  background-color: #c5cae9; 
+}
+
+/* Синтаксические */
+.vydelit_anaphora {
+  background-color: #ffe082; 
+}
+.vydelit_epifora {
+  background-color: #a5d6a7; 
+}
+.vydelit_parcellation {
+  background-color: #ffab91; 
+  border-left: 3px solid #ff5722; 
+  padding-left: 8px; 
 }

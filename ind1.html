@@ -2,23 +2,67 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Каталог стихотворений</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Поэтический архив</title>
   <link rel="stylesheet" href="st.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="osnovnoi.js"></script>
 </head>
 <body>
-
-  <h1>Каталог стихотворений</h1>
-
-  <div class="search-box">
-    <label>Поиск по автору: <input type="text" id="pole_avtor"></label><br>
-    <button onclick="naiti_stihi()">Найти</button>
-  </div>
-
-  <div id="spisok_stihov">
+  <h1>Поэтический архив</h1>
   
+
+  <div id="auth-container">
+    <div id="forma_vhoda" style="display:none;">
+      <h3>Вход</h3>
+      <input type="email" id="email" placeholder="Email"><br><br>
+      <input type="password" id="parol" placeholder="Пароль"><br><br>
+      <button onclick="voiti()">Войти</button>
+      <button onclick="pokazat_registraciyu()">Регистрация</button>
+    </div>
+
+    <div id="forma_registracii" style="display:none;">
+      <h3>Регистрация</h3>
+      <input type="email" id="email_reg" placeholder="Email"><br><br>
+      <input type="password" id="parol_reg" placeholder="Пароль"><br><br>
+      <input type="text" id="imya_polzovatelya" placeholder="Имя"><br><br>
+      <button onclick="zaregistririvatsya()">Зарегистрироваться</button>
+      <button onclick="pokazat_vhod()">Назад к входу</button>
+    </div>
+
+    <div id="panel_polzovatelya" style="display:none;">
+      <p>Привет, <span id="imya_polzovatelya_panel"></span>!</p>
+      <button onclick="vyiti()">Выйти</button>
+      <button onclick="pokazat_formu_dobavleniya()">Добавить стих</button>
+    
+      <a href="instrukciya.html" style="display: block; margin-top: 5px; text-decoration: none; color: rgb(255, 166, 0);">Как добавлять стихи</a>
+      <a href="spravochnayainfa.html" style="display: block; margin-top: 10px; text-decoration: none; color: rgb(0, 255, 30);">Справочная информация</a>
+      <a href="catalog.html" style="display: block; margin-top: 10px; text-decoration: none; color: rgb(195, 0, 255);">Каталог стихотворений</a>
+    </div>
+
+    <button id="knopka_vhoda" onclick="pokazat_vhod()">Войти / Регистрация</button>
   </div>
-
-  <script src="skr.js"></script>
-
+  
+  <hr>
+  
+  
+  <div id="forma_dobavleniya_stiha" style="display:none; margin-top: 20px; padding: 20px; border: 1px solid #ccc;">
+    <h3>Добавить стихотворение</h3>
+    <input type="text" id="nazvanie_stiha" placeholder="Название"><br><br>
+    <input type="text" id="avtor_stiha" placeholder="Автор стихотворения"><br><br>
+    <input type="text" id="janr_stiha" placeholder="Жанр"><br><br>
+    <input type="text" id="epoha_stiha" placeholder="Эпоха"><br><br>
+    <textarea id="tekst_stiha" placeholder="Текст стихотворения (используйте &lt;epithet&gt; и &lt;metaphor&gt;)" rows="10" style="width: 100%;"></textarea><br><br>
+    <button onclick="dobavit_stih()">Добавить</button>
+    <button onclick="skryt_formu_dobavleniya()">Отмена</button>
+  </div>
+  
+  <script>
+    
+    window.addEventListener('DOMContentLoaded', () => {
+      proverit_polzovatelya();
+    });
+  </script>
 </body>
 </html>

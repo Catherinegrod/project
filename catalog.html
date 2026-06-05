@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог стихотворений</title>
+  <link rel="stylesheet" href="st.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="osnovnoi.js"></script>
+</head>
+<body>
+  <h1>Каталог стихотворений</h1>
+  
+  <a href="ind1.html" style="display: block; margin-bottom: 20px;">← Вернуться в главное меню</a>
+  
+  <div class="search-box">
+    <label>Поиск по автору:</label>
+    <input type="text" id="pole_avtor" placeholder="Введите автора">
+    <button onclick="naiti_stihi()">Найти</button>
+  </div>
+
+  <div id="spisok_stihov"></div>
+  
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      pokazat_vse_stihi();
+    });
+  </script>
+</body>
+</html>
